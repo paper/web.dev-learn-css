@@ -1,2 +1,39 @@
 # 盒子模型
 CSS 显示的每一个内容都是一个盒子。理解盒子模型是如何工作，是 CSS 的核心基础。
+
+假设你有这么一段 HTML
+
+```html
+<p>I am a paragraph of text that has a few words in it.</p>
+```
+
+然后为它写个CSS
+
+```css
+p {
+  width: 100px;
+  height: 50px;
+  padding: 20px;
+  border: 1px solid;
+}
+```
+
+内容会超出元素边界。而且它宽度其实是140px，而不是100px。为什么会这样？盒子模型是CSS核心基础，理解它是如何工作的，它是如何受到CSS其他方面影响的。重要的是，如何掌握它才能我们写出更可预测的CSS代码。
+
+[https://codepen.io/web-dot-dev/pen/WNRemxN](https://codepen.io/web-dot-dev/pen/WNRemxN)
+
+在写CSS或在写整个web时，有一个非常重要的事情，那就是CSS显示的所有内容都是一个个盒子。即使盒子使用了`border-radius`圆角属性让它看起来像个圆，或者放一些文本。唯一要记住就是：“它们都是盒子”。
+
+> [编者注] 大家可以使用 Chrome 调试工具，在`Elements` tab 下面，鼠标移到任何元素上去看看，是不是都有个透明的矩形的高亮阴影。
+
+## 内容和大小
+
+盒子会根据不同的`display` 值会有不同的特性，设置尺寸和内容都会影响到它们。内容可以是更多的盒子（子元素）或纯文本内容。无论哪种方式，默认情况下，内容都会影响盒子的尺寸。
+
+你可以**改变外部**来控制盒子大小，或者也可以让浏览器使用**内部大小**（依据内容本身大小）来决定。
+
+为了快速区别它们的不同，让我们来看个例子：
+
+[https://codepen.io/web-dot-dev/pen/abpoMBL](https://codepen.io/web-dot-dev/pen/abpoMBL)
+
+
