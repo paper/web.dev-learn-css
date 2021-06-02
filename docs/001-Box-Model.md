@@ -119,14 +119,73 @@ p {
 要想了解如何掌控盒子模型，那你得先知道浏览器做了什么。
 
 >[译者注]  
->`user agent stylesheet`是值浏览器默认样式表，当用户没有写CSS时，浏览器会按照内置的样式表来渲染。但差异很大，所以为什么需要类似`Normalize.css`的项目
+>`user agent stylesheet` 是指浏览器默认样式表，当用户没有写CSS时，浏览器会按照内置的样式表来渲染。但各种浏览器差异很大，所以为什么需要类似`Normalize.css`的项目
 
 每个浏览器都给HTML文档提供了默认样式表，虽然每个浏览器默认样式差异很大，但至少它们提供了合理的默认值以使得内容更易阅读。它们定义了元素的外观和行为，当页面没有使用CSS时。在默认样式中，每个格子的`display`也都设置了默认值。例如，如果我们在正常文档流，`div`元素`display`默认值是`block`，`li`元素`display`默认值是`list-item`，而`span`元素`display`默认值是`inline`。
 
-给一个行内元素（`inline`）设置外边距，但其他元素是不会受它影响的。如果把它`display`设置为`line-block`就可以让其他元素受到它外边距的影响，而且这个元素还可继续保持内联元素的一些行为。一个块级元素（`block`）默认情况是填充整个它所在的横向内在空间，比如一整行（但不会超过其父节点宽度）。而`inline`和`inline-block`元素最大也只会和它内容一样大。
+给一个行内元素（`inline`）设置外边距，但其他元素是不会受它影响的。如果把它`display`设置为`line-block`就可以让其他元素受到它外边距的影响，而且这个元素还可继续保持内联元素的一些行为。一个块级元素（`block`）默认情况是填充整个它所在的横向内在空间。而`inline`和`inline-block`元素最大也只会和它内容一样大。
 
 >[译者注]  
->上面一段的翻译可能有问题，也可能是原文有问题。行内元素的`margin-top`，`margin-bottom`及时设置了，也不会对周围的元素产生影响。但`margin-left`和`margin-right`是会对周围元素产生影响的。
+>上面一段的翻译可能有问题，也可能是原文有问题。行内元素比如`span`（不可替换元素）的`margin-top`，`margin-bottom` 即使设置了，也不会对周围的元素产生影响。但 `margin-left` 和 `margin-right` 是会对周围元素产生影响的。如果行内元素是`img`（可替换元素），那么 `margin` 4个值都会对周围元素有影响。`padding`同理。
 
+除了理解浏览器默认样式是如何影响每一个盒子，还需要了解 `box-sizing` 属性。它告诉浏览器怎么计算盒子模型尺寸。默认情况，所有元素的默认样式是：`box-sizing:content-box;`
 
+当元素设置了`box-sizing:content-box`，意味着当你给它设置尺寸时，比如`width`或`height`，它们就是内容盒子的尺寸。当你再设置 `padding` 和 `border`，它们将会作为额外的值添加到内容盒子的尺寸上。
 
+>[译者注]  
+>这里我举两个例子：
+>- `divA` 设置 `box-sizing: content-box`，然后 `width` 设置 `100px`，那么它的内容宽度就是 `100px`，然后你再设置 `padding: 20px; border: 10px solid`，那么整个 `divA` 的占据的宽度空间将是`100+20+20+10+10 = 160px`。
+>- `divB` 设置 `box-sizing: border-box`，然后 `width` 设置 `100px`，然后你再设置 `padding: 20px; border: 10px solid`，那么整个 `divB` 的占据的宽度空间还是 `100px`，但其内容盒子宽度是：`100-20-20-10-10 =4 0px`。
+>所以目前主流的设置盒子模型 `box-sizing` 为 `border-box`。这个好处是，在写页面时心智压力上会小一些，也更容易布局。文章下面也有讲。
+
+```css
+/*小测试*/
+/*你认为 .my-box 的实际宽度应该是 200px 还是 260px */
+.my-box {
+  width: 200px;
+  border: 10px solid;
+  padding: 20px;
+}
+```
+
+这个盒子的实际宽度将是260px。由于CSS默认设置`box-sizing: content-box`，所以它的实际宽度是由内容宽度、`padding`两边尺寸和`border`两边尺寸之和算出来的。所以就是200px的内容宽度 + 40px的`padding`值 + 20px的`border`值，等于260px。 
+
+不过，你可以用 `border-box` 来修改盒子模型：
+
+```css
+.my-box {
+  box-sizing: border-box;
+  width: 200px;
+  border: 10px solid;
+  padding: 20px;
+}
+```
+
+这 `border-box` 盒子模型，就是告诉 CSS 将实际的宽度应用到边框盒子上，而不是内容盒子。这意味着我们的`border`和`padding`将会被`推入`。当设置 `.my-box`为`200px`宽度时，那它实际上就是`200px`宽度。
+
+我们通过下面的 demo 来看看其工作原理。请注意，当你切换`box-sizing`值时，它将会通过蓝色背景来显示哪些CSS被应用在盒子内。
+
+[https://codepen.io/web-dot-dev/pen/oNBvVpM](https://codepen.io/web-dot-dev/pen/oNBvVpM)
+
+```css
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+```
+
+上面一小段 CSS 代码，是让文档内的所有的元素，包括`::before` 和 `::after` 等伪类元素都应用 `box-sizing: border-box`。这意味着每个元素都将使用这个新的盒子模型。
+
+因为 `border-box` 盒子模型更可预测，开发人员经常会添加此规则到重置样式表中，[比如这个](https://piccalil.li/blog/a-modern-css-reset)。
+
+## 相关资源
+
+- [Introduction to the box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
+- [What are browser developer tools?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)
+
+## 各浏览器默认样式
+
+- [Chromium](https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/html.css)
+- [Firefox](https://searchfox.org/mozilla-central/source/layout/style/res/html.css)
+- [Webkit](https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css)
