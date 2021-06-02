@@ -1,0 +1,27 @@
+{
+  "name": "web.dev-learn-css",
+  "version": "1.0.0",
+  "description": "课程地址：https://web.dev/learn/css/",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paper/web.dev-learn-css.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paper/web.dev-learn-css/issues"
+  },
+  "homepage": "https://github.com/paper/web.dev-learn-css#readme",
+  "devDependencies": {
+    "vuepress": "^1.8.2"
+  }
+}

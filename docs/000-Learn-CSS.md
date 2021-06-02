@@ -1,6 +1,6 @@
 # 学习 CSS
 
-这是一个会一直更新的 CSS 课程和参考，可帮助提高你 web 写样式的技能。
+这是一个经常更新的 CSS 课程和参考，可帮助你提高 web 样式专业技能。
 
 ## 欢迎来学习 CSS！
 
@@ -12,13 +12,14 @@
 
 本课程是为初学者和高级 CSS 开发人员创建的。你可以重头到尾学习该课程，以从上到下全面了解 CSS。或者你可以当做一个参考手册一样进行查阅特点主题。如果你是完全新手，建议去查看 MDN 的 HTML 入门文档，来学习如何编写标签和引入你的样式表。
 
-[译者注]
-- https://developer.mozilla.org/zh-CN/docs/Web/HTML
-- https://developer.mozilla.org/zh-CN/docs/Web/CSS
+::: tip 译者注
+- [https://developer.mozilla.org/zh-CN/docs/Web/HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+- [https://developer.mozilla.org/zh-CN/docs/Web/CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+:::
 
 在这里你将会学到：
 
-### 盒子模型
+### [盒子模型](./001-Box-Model.md)
 CSS 显示的每一个内容都是一个盒子。理解盒子模型是如何工作，是 CSS 的核心基础。
 
 ### 选择器
