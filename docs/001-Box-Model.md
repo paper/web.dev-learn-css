@@ -1,4 +1,6 @@
 # 盒子模型
+>原文地址：https://web.dev/learn/css/box-model/
+
 CSS 显示的每一个内容都是一个盒子。理解盒子模型是如何工作，是 CSS 的核心基础。
 
 假设你有这么一段 HTML
