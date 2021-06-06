@@ -23,8 +23,44 @@ article p:first-of-type {
 
 CSS提供了非常多的这一类选项，有非常简单的，也有非常复杂的，用来解决这种情况。
 
-## CSS规则的组成部分
+## CSS规则的组成
 
-要想了解选择器的工作方式和它们在CSS中的作用，那么理解CSS规则原理很重要。
+要想了解选择器的工作方式和它们在CSS中的作用，那么理解CSS规则的组成原理就重要了。CSS规则是一段包含一个或多个选择器和一个或多个声明的代码。
 
 ![An image of CSS rule with the selector .my-css-rule](./images/002-1.svg)
+
+在这段CSS代码中，选择器`.my-css-rule`表示找到所有类名叫`my-css-rule`的元素。在代码大括号里面有三个声明。声明是一个键值对（即一个属性对应一个值），应用在被选择器匹配的元素上。CSS规则可以有任意多个选择器和声明。
+
+## 简单选择器
+
+大多数直接以HTML元素，类，ID 或 HTML额外属性为选择器的为简单选择器。
+
+>译者注：
+>比如 `h1`、`.my-class`、`#myId`、`p[data-hellp]` 这些选择器 
+
+## 通配选择器
+
+一个[通配选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors)，也被称为通配符，可匹配任意元素。
+
+```css
+* {
+  color: hotpink;
+}
+```
+
+上面的代码让页面上所有元素的字体颜色是亮粉色。
+
+## 类型选择器
+
+[类型选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors)直接匹配HTML元素。
+
+```css
+section {
+  padding: 2em;
+}
+```
+
+上面的代码让所有`section`元素都有`2em`的`内边距`
+
+## 类选择器
+
