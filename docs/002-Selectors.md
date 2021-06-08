@@ -92,4 +92,15 @@ section {
 
 这是因为CSS是查找`class`属性是不是包含了定义的类，而不是完全匹配该类。
 
->你几乎可以定义任何类属性值。只有一件事可能会让你失望，就是你不能以数字开头定义类或ID的名称，比如 `1element`。你可以[在规范中](https://www.w3.org/TR/CSS21/syndata.html#characters)发现更多。
+>你几乎可以定义任何类属性值。只有一件事可能会让你失望，就是你不能以数字开头定义类或ID的名称，比如 `.1element`。你可以[在规范中](https://www.w3.org/TR/CSS21/syndata.html#characters)发现更多。
+
+## ID 选择器
+
+一个HTML元素在页面中只能有一个唯一的`id`属性和值。你可以使用[ID选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors)像这样选择元素：
+
+```css
+#rad {
+  border: 1px solid blue;
+}
+```
+
