@@ -23,6 +23,8 @@ article p:first-of-type {
 
 CSS提供了非常多的这一类选项，有非常简单的，也有非常复杂的，用来解决这种情况。
 
+https://codepen.io/web-dot-dev/pen/XWprGYz
+
 ## CSS规则的组成
 
 要想了解选择器的工作方式和它们在CSS中的作用，那么理解CSS规则的组成原理就重要了。CSS规则是一段包含一个或多个选择器和一个或多个声明的代码。
@@ -64,3 +66,30 @@ section {
 
 ## 类选择器
 
+一个HTML元素可以有一个或多个`class`属性。[类选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/Class_selectors)匹配那些加上了这些类的元素。
+
+```html
+<div class="my-class"></div>
+<button class="my-class"></button>
+<p class="my-class"></p>
+```
+
+任何元素添加了这个类名，那么它的字体颜色就会是红色：
+
+```css
+.my-class {
+  color: red;
+}
+```
+
+注意 `.` 点只出现在CSS中，而不在HTML。这是因为 `.` 点字符在CSS语言中表示匹配具有该类属性的元素。这是CSS的常见模式，可以使用一些特殊的单词或字符来表达你要定义的选择器的名称。
+
+一个HTML元素只要有一个`.my-class`类，那么就会匹配到对应的CSS规则，即使元素还有多个其他类。比如：
+
+```html
+<div class="my-class another-class some-other-class"></div>
+```
+
+这是因为CSS是查找`class`属性是不是包含了定义的类，而不是完全匹配该类。
+
+>你几乎可以定义任何类属性值。只有一件事可能会让你失望，就是你不能以数字开头定义类或ID的名称，比如 `1element`。你可以[在规范中](https://www.w3.org/TR/CSS21/syndata.html#characters)发现更多。
