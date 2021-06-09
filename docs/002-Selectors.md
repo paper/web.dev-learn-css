@@ -104,3 +104,31 @@ section {
 }
 ```
 
+这段CSS代码将会把`id`是`rad`的HTML元素加个蓝色边框，比如这样的元素：
+
+```html
+<div id="rad"></div>
+```
+
+和类选择器 `.` 类型，使用 `#` 字符指令，告诉CSS查找与其`id`匹配的元素。
+
+>如果浏览器遇到多个`id`实例，那么它仍然会应用与其选择器匹配的CSS样式。但是，任何具有`id`属性的元素都应该只有唯一的值。除非你要写具体的CSS给单个元素，否则请避免使用ID选择器来写样式，因为这样你就无法复用在其他地方了。
+
+>这里加个例子，样式多个id确实可以，但如果js获取的话，也就返回第一个，所以千万别尝试使用多个相同名称的id
+
+## 属性选择器
+
+你可以使用[属性选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)来查找具有特定HTML属性或属性具有特定值的元素。通过方括号`[ ]`包裹选择器来让CSS查找属性。
+
+```css
+[data-type='primary'] {
+  color: red;
+}
+```
+
+这段CSS样式是让所有具有`data-type`的属性，并且值是`primary`的元素字体为红色。比如：
+
+```html
+<div data-type="primary"></div>
+```
+
