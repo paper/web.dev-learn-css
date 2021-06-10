@@ -132,3 +132,54 @@ section {
 <div data-type="primary"></div>
 ```
 
+除了查找`data-type`特定值的元素，你还可以只查找具有这个属性的元素，而不考虑其值。
+
+```css
+[data-type] {
+  color: red;
+}
+```
+
+```html
+<div data-type="primary"></div>
+<div data-type="secondary"></div>
+```
+
+两个`div`的字体都会是红色。
+
+向属性选择器添加`s`运算符，就可以使之区分大小写。
+
+```css
+[data-type='primary' s] {
+  color: red;
+}
+```
+
+// TODO 这里要说明 s 是一个实验性的，最好不要使用。
+这意味着如果一个HTML有属性`data-type`的值是`Primary`，而不是`primary`，它字体将不会是红色。通过使用`i`运算符，可以实现相反的大小写不敏感。
+
+除了上面例子操作符，你还可以通过在属性值里面加一些特殊操作符来进行部分匹配。
+
+```css
+/* A href that contains “example.com” */
+/* 匹配具有 href 属性且值包含 “example.com” 字符的元素 */
+[href*='example.com'] {
+  color: red;
+}
+
+/* A href that starts with https */
+/* 匹配具有 href 属性且值以 https 字符开头的元素 */
+[href^='https'] {
+  color: green;
+}
+
+/* A href that ends with .com */
+/* 匹配具有 href 属性且值以 .com 字符结尾的元素 */
+[href$='.com'] {
+  color: blue;
+}
+```
+
+https://codepen.io/web-dot-dev/pen/BapBbOy
+
+## 选择器组
