@@ -183,3 +183,19 @@ section {
 https://codepen.io/web-dot-dev/pen/BapBbOy
 
 ## 选择器组
+
+一个选择器不仅仅匹配单个元素，你还可以使用逗号分隔多个选择器：
+
+```css
+strong,
+em,
+.my-class,
+[lang] {
+  color: red;
+}
+```
+
+这段代码表示，`<strong>`元素、`<em>`元素、类名`.my-class`的元素 和 属性含有`lang`的元素的字体都是红色。
+
+## 伪类和伪元素
+
