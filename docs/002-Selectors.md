@@ -199,3 +199,29 @@ em,
 
 ## 伪类和伪元素
 
+CSS为页面的一些特定的状态提供了一些有用的选择器，比如鼠标悬停在元素上，元素内部的一些结构，或元素的一部分等等。
+
+### 伪类
+
+HTML元素可以发现它们自己处于各种状态，或者它们的交互状态，或者它们的子元素处于某种状态。
+
+比如，用户鼠标指针悬停在HTML元素或它子元素上。这些情况，请使用`:hover`伪类。
+
+```css
+/* Our link is hovered */
+/* 鼠标悬停在 a 标签上，出现1px的点阵绿色线 */
+a:hover {
+  outline: 1px dotted green;
+}
+
+/* Sets all even paragraphs to have a different background */
+/* 偶数（比如 0，2，4等等）段落的背景色是 花卉白 */
+p:nth-child(even) {
+  background: floralwhite;
+}
+```
+// TODO 要改为对应的 md  
+更多伪类请[查看这里](https://web.dev/learn/css/pseudo-classes)
+
+### 伪元素
+
